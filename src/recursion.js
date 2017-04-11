@@ -176,16 +176,19 @@ var exponent = function(base, exp) {
   }
 };
 
-// 4^4 = 4^2 * 4^2
-// e(4,2) -> 4 *
-// e(4,1) -> 4
-
 
 // 8. Determine if a number is a power of two.
 // powerOfTwo(1); // true
 // powerOfTwo(16); // true
 // powerOfTwo(10); // false
 var powerOfTwo = function(n) {
+  if (n === 1 || n === 2) {
+    return true;
+  } else if (n < 2) {
+    return false;
+  } else {
+    return powerOfTwo(n / 2);
+  }
 };
 
 // 9. Write a function that reverses a string.
