@@ -142,7 +142,44 @@ var range = function(x, y) {
 // exponent(4,3); // 64
 // https://www.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/computing-powers-of-a-number
 var exponent = function(base, exp) {
+  if (exp === 0 && typeof base === 'number') {
+    return 1;
+  } else if (exp === 1 && typeof base === 'number') {
+    return base;
+  }
+
+  //convert to array
+  if (typeof base === 'number') {
+    base = [base];
+  }
+
+  // positive exponent case
+  if (exp > 0) {
+    if (exp === 1) {
+      return base.reduce((prev, next) => {
+        return prev * next
+      });
+    } else {
+      base.push(base[base.length - 1]);
+      return exponent(base, exp - 1);
+    }
+  } else {
+    if (exp === -1) {
+      var denominator = base.reduce((prev, next) => {
+        return prev * next
+      });
+      return 1 / denominator
+    } else {
+      base.push(base[base.length - 1]);
+      return exponent(base, exp + 1);
+    }
+  }
 };
+
+// 4^4 = 4^2 * 4^2
+// e(4,2) -> 4 *
+// e(4,1) -> 4
+
 
 // 8. Determine if a number is a power of two.
 // powerOfTwo(1); // true
