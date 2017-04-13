@@ -230,6 +230,12 @@ var palindrome = function(string) {
 // modulo(17,5) // 2
 // modulo(22,6) // 4
 var modulo = function(x, y) {
+  if (y === 1) {
+    return x;
+  } else {
+    x = x - (parseInt(x / y) * y);
+    return modulo(x, 1);
+  }
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator or
