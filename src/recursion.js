@@ -205,6 +205,23 @@ var reverse = function(string) {
 
 // 10. Write a function that determines if a string is a palindrome.
 var palindrome = function(string) {
+  // remove white space and ignore capitals
+  string = string.trim().toLowerCase();
+  // compare first and last characters of string
+  if (string.charAt(0) !== string.charAt(string.length - 1)) {
+    return false;
+  }
+  // handle even lengthed string
+  if (string.length === 2 && string.charAt(0) === string.charAt(1)) {
+    return true;
+  }
+  //handle odd lengthed string
+  if (string.length === 1) {
+    return true;
+  }
+  else {
+    return palindrome(string.slice(1, string.length - 1));
+  }
 };
 
 // 11. Write a function that returns the remainder of x divided by y without using the
