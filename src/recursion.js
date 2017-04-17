@@ -231,7 +231,7 @@ var palindrome = function(string) {
 // modulo(22,6) // 4
 var modulo = function(x, y) {
   if (y === 1) {
-    return x;
+    return 0;
   } else {
     x = x - (parseInt(x / y) * y);
     return modulo(x, 1);
@@ -241,6 +241,15 @@ var modulo = function(x, y) {
 // 12. Write a function that multiplies two numbers without using the * operator or
 // Math methods.
 var multiply = function(x, y) {
+  result = 0;
+
+  if (y === 1) {
+    result = x;
+    return result;
+  } else {
+
+    return result += multiply(x, y - 1);
+  }
 };
 
 // 13. Write a function that divides two numbers without using the / operator or
@@ -261,6 +270,13 @@ var gcd = function(x, y) {
 // compareStr('house', 'houses') // false
 // compareStr('tomato', 'tomato') // true
 var compareStr = function(str1, str2) {
+  if (!str1 && !str2) {
+    return true;
+  } else if (str1[0] !== str2[0]) {
+    return false;
+  } else {
+    return compareStr(str1.slice(1), str2.slice(1))
+  }
 };
 
 // 16. Write a function that accepts a string and creates an array where each letter
