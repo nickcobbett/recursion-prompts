@@ -333,30 +333,55 @@ var fizzBuzz = function(n) {
     return array;
   } else if (n % 3 === 0 && n % 5 === 0) {
     array.unshift('FizzBuzz');
-    return fizzBuzz(n - 1).concat(array);
   } else if (n % 3 === 0) {
     array.unshift('Fizz');
-    return fizzBuzz(n - 1).concat(array);
   } else if (n % 5 === 0) {
     array.unshift('Buzz')
-    return fizzBuzz(n - 1).concat(array);
   } else {
     array.unshift(n.toString());
-    return fizzBuzz(n - 1).concat(array);
   }
+  return fizzBuzz(n - 1).concat(array);
 };
-console.log(fizzBuzz(5))
+// console.log(fizzBuzz(5))
 
 // 20. Count the occurence of a value in a list.
 // countOccurrence([2,7,4,4,1,4], 4) // 3
 // countOccurrence([2,'banana',4,4,1,'banana'], 'banana') // 2
 var countOccurrence = function(array, value) {
+  var count = 0;
+  if (!array.length) {
+    return count;
+  } else {
+    if (array.pop() === value) {
+      count++;
+    }
+    return count += countOccurrence(array, value);
+  }
 };
 
 // 21. Write a recursive version of map.
 // rMap([1,2,3], timesTwo); // [2,4,6]
 var rMap = function(array, callback) {
+  var result = [];
+  if (!array.length) {
+    console.log(result)
+    return result;
+  } else {
+    result.unshift(callback(array.shift()));
+    return result.concat(rMap(array, callback));
+  }
 };
+
+// var rMap = function(array, callback) {
+//   var result = [];
+//   if (!array.length) {
+//     return result;
+//   } else {
+//     result.unshift(callback(array.shift()))
+//     return result.concat(rMap(array, callback))
+//   }
+// };
+
 
 // 22. Write a function that counts the number of times a key occurs in an object.
 // var obj = {'e':{'x':'y'},'t':{'r':{'e':'r'},'p':{'y':'r'}},'y':'e'};
